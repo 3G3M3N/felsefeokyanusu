@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felsefe Okyanusu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1c1c1c;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #e0e0e0;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+            padding: 5px 0;
+        }
+
+        nav ul li a {
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #1e90ff;
+        }
+
+        #chat-container {
+            background-color: #2c2c2c;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            width: 90%;
+            margin: 20px 0;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+        }
+
+        #messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        .message.bot {
+            align-self: flex-start;
+            background-color: #444;
+        }
+
+        #loading {
+            display: none;
+            align-self: center;
+            margin: 20px 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+        }
+
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 15px;
+            border: 1px solid #555;
+            border-radius: 8px;
+            margin-right: 10px;
+            background-color: #444;
+            color: #f5f5f5;
+        }
+
+        button {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #1e90ff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1c75cc;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+                padding: 5px 0;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+
+            #chat-container {
+                padding: 15px;
+                height: 60vh;
+            }
+
+            input[type="text"], button {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="https://felsefeokyanusu.nodebb.com/" target="_blank">Forum</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
+    <div>
+    <h1 style="text-align: center;">e-mail: egemenazyr123@gmail.com</h1>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>

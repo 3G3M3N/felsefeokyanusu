@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        form {
+            margin-bottom: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item h3 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+
+    <main>
+        <section id="blog-admin">
+            <h2>Blog Yönetimi</h2>
+            <form id="blog-form">
+                <div>
+                    <label for="blog-title">Başlık</label>
+                    <input type="text" id="blog-title" name="blog-title" required>
+                </div>
+                <div>
+                    <label for="blog-image">Görsel URL</label>
+                    <input type="text" id="blog-image" name="blog-image" required>
+                </div>
+                <div>
+                    <label for="blog-content">İçerik</label>
+                    <textarea id="blog-content" name="blog-content" required></textarea>
+                </div>
+                <button type="submit">Blog Ekle</button>
+            </form>
+            <div id="blog-list" class="container"></div>
+        </section>
+
+        <section id="store-admin">
+            <h2>Mağaza Yönetimi</h2>
+            <form id="product-form">
+                <div>
+                    <label for="product-name">Ürün Adı</label>
+                    <input type="text" id="product-name" name="product-name" required>
+                </div>
+                <div>
+                    <label for="product-image">Görsel URL</label>
+                    <input type="text" id="product-image" name="product-image" required>
+                </div>
+                <div>
+                    <label for="product-description">Açıklama</label>
+                    <textarea id="product-description" name="product-description" required></textarea>
+                </div>
+                <button type="submit">Ürün Ekle</button>
+            </form>
+            <div id="product-list" class="container"></div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const blogForm = document.getElementById('blog-form');
+            const blogList = document.getElementById('blog-list');
+            const productForm = document.getElementById('product-form');
+            const productList = document.getElementById('product-list');
+
+            function getFromLocalStorage(key) {
+                return JSON.parse(localStorage.getItem(key)) || [];
+            }
+
+            function setToLocalStorage(key, value) {
+                localStorage.setItem(key, JSON.stringify(value));
+            }
+
+            function loadBlogs() {
+                const blogs = getFromLocalStorage('blogs');
+                blogList.innerHTML = '';
+                blogs.forEach(blog => {
+                    const div = document.createElement('div');
+                    div.classList.add('item');
+                    div.innerHTML = `<h3>${blog.title}</h3><img src="${blog.image}" alt="${blog.title}"><p>${blog.content}</p>`;
+                    blogList.appendChild(div);
+                });
+            }
+
+            function loadProducts() {
+                const products = getFromLocalStorage('products');
+                productList.innerHTML = '';
+                products.forEach(product => {
+                    const div = document.createElement('div');
+                    div.classList.add('item');
+                    div.innerHTML = `<h3>${product.name}</h3><img src="${product.image}" alt="${product.name}"><p>${product.description}</p>`;
+                    productList.appendChild(div);
+                });
+            }
+
+            blogForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const title = document.getElementById('blog-title').value;
+                const image = document.getElementById('blog-image').value;
+                const content = document.getElementById('blog-content').value;
+
+                const blogs = getFromLocalStorage('blogs');
+                blogs.push({ title, image, content });
+                setToLocalStorage('blogs', blogs);
+
+                loadBlogs();
+                blogForm.reset();
+            });
+
+            productForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('product-name').value;
+                const image = document.getElementById('product-image').value;
+                const description = document.getElementById('product-description').value;
+
+                const products = getFromLocalStorage('products');
+                products.push({ name, image, description });
+                setToLocalStorage('products', products);
+
+                loadProducts();
+                productForm.reset();
+            });
+
+            loadBlogs();
+            loadProducts();
+        });
+    </script>
+</body>
+</html>
