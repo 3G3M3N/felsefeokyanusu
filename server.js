@@ -6,7 +6,7 @@ const { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } = require('@googl
 const app = express();
 const port = 3000;
 
-const apiKey = 'AIzaSyDNg5cCUZQnCHk-0tFOaZYmys5F2vrb58k';  // Buraya kendi API anahtarınızı ekleyin
+const apiKey = 'AIzaSyAr1lTvw0pe11kSBbTF2oJGlNy8ALvsKG4';  // Buraya kendi API anahtarınızı ekleyin
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
